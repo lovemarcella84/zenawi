@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap');
 
 :root {
-  --navy-900: #0c2c82;
-  --navy-800: #11349b;
-  --navy-700: #1a42b8;
-  --navy-600: #2650cc;
-  --gold-300: #ffcf5c;
+  --navy-900: #11349b;
+  --navy-800: #2444a3;
+  --navy-700: #415daf;
+  --navy-600: #5d75bb;
+  --gold-300: #f9c659;
   --gold-400: #f6a800;
-  --gold-600: #cc8c00;
+  --gold-600: #b97e00;
   --cream-50: #fbf8f2;
   --cream-100: #f4efe4;
   --ink: #10202f;
@@ -114,19 +114,7 @@ section { padding: 84px 0; position: relative; }
 .topbar a { color: inherit; opacity: 0.9; transition: opacity 0.25s; }
 .topbar a:hover { opacity: 1; color: var(--gold-300); }
 
-.navwrap {
-  position: sticky; top: 0; z-index: 60;
-  border-bottom: 1px solid transparent;
-  transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
-}
-.navwrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(251, 248, 242, 0.86);
-  backdrop-filter: blur(14px) saturate(1.4);
-  z-index: -1;
-}
+.navwrap { position: sticky; top: 0; z-index: 60; background: rgba(251, 248, 242, 0.86); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid transparent; transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease); }
 .navwrap.scrolled { box-shadow: 0 6px 24px -12px rgba(14,35,64,0.18); border-bottom-color: var(--line); }
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: 24px; }
 .brand img { height: 72px; width: auto; }
@@ -153,9 +141,8 @@ section { padding: 84px 0; position: relative; }
 .hero-bg img, .hero-bg svg, .hero-bg-fill { width: 100%; height: 100%; object-fit: cover; }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
-  background: rgba(17, 52, 155, 0.9);
+  background: linear-gradient(180deg, rgba(17,52,155,0.6) 0%, rgba(17,52,155,0.42) 45%, rgba(17,52,155,0.78) 100%);
 }
-
 .hero .container, .pagehead .container { position: relative; z-index: 2; }
 .crumb { font-size: 0.82rem; opacity: 0.72; letter-spacing: 0.02em; }
 .pagehead h1, .hero h1, .hero-type-title, .pagehead-title { color: #fff; font-size: clamp(2.4rem, 5vw, 3.6rem); margin-top: 10px; }
@@ -266,7 +253,7 @@ h4 { font-size: 1.2rem; }
 .pcard-media img, .pcard-media svg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); position: absolute; inset: 0; }
 .pcard:hover .pcard-media img { transform: scale(1.06); }
 .pcard-tag { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.92); color: var(--navy-800); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 999px; }
-.pcard-tag.sold { background: rgba(11,28,51,0.85); color: var(--gold-300); }
+.pcard-tag.sold { background: rgba(17,52,155,0.85); color: var(--gold-300); }
 .pcard-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
 .pcard-price { color: var(--gold-600); font-weight: 700; font-size: 0.95rem; }
 .pcard-loc { font-size: 0.88rem; color: #3d5163; font-weight: 500; }
@@ -409,6 +396,24 @@ footer a:hover { color: var(--gold-400); }
 .gallery-thumbs {
   display: grid; grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 12px; max-width: 420px;
 }
+
+/* ---------- Title deed slideshow ---------- */
+.deed-slideshow-frame {
+  position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 8px;
+  overflow: hidden; background: var(--cream-100);
+}
+.deed-slide {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 0.8s var(--ease);
+}
+.deed-slide.active { opacity: 1; }
+.deed-slideshow-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.deed-dot {
+  width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+  background: var(--line); transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.deed-dot.active { background: var(--gold-400); transform: scale(1.35); }
+.deed-dot:hover { background: var(--gold-300); }
 .gallery-thumb {
   border: 2px solid transparent; border-radius: var(--radius-sm); overflow: hidden;
   aspect-ratio: 4/3; padding: 0; cursor: pointer; background: var(--cream-100);
@@ -441,7 +446,7 @@ footer a:hover { color: var(--gold-400); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-    .navlinks { position: fixed; top: 72px; left: 0; right: 0; height: calc(100dvh - 72px); background: var(--cream-50); flex-direction: column; padding: 30px 24px; gap: 6px; transform: translateX(100%); transition: transform 0.4s var(--ease); overflow-y: auto; }
+  .navlinks { position: fixed; inset: 72px 0 0 0; background: var(--cream-50); flex-direction: column; padding: 30px 24px; gap: 6px; transform: translateX(100%); transition: transform 0.4s var(--ease); overflow-y: auto; }
   .navlinks.open { transform: translateX(0); }
   .navlinks li { width: 100%; }
   .toplink { display: block; padding: 14px 4px; font-size: 1.05rem; border-bottom: 1px solid var(--line); }

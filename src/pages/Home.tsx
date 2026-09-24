@@ -5,9 +5,17 @@ import Reveal from '../components/Reveal';
 import Typewriter from '../components/Typewriter';
 import CountUp from '../components/CountUp';
 import PropertyCard from '../components/PropertyCard';
+import TitleDeedSlideshow from '../components/TitleDeedSlideshow';
 import { PROPERTIES, waLink } from '../data/properties';
 
 const featured = PROPERTIES.filter((p) => p.status === 'available').slice(0, 6);
+
+const titleDeedPhotos = [
+  { src: '/img/brand/title-deed.jpg', alt: 'Verified Zenawi title deed certificate' },
+  { src: '/img/brand/title-deed-2.jpg', alt: 'Zenawi client receiving her title deed' },
+  { src: '/img/brand/title-deed-3.jpg', alt: 'Zenawi client receiving her title deed' },
+  { src: '/img/brand/title-deed-4.jpg', alt: 'Zenawi client receiving her title deed' },
+];
 
 const heroStats = [
   { end: 2020, label: 'Founded' },
@@ -109,11 +117,11 @@ export default function Home() {
           <Reveal delay={0.08} variant="slide" style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{
               background: '#fff', padding: 18, borderRadius: 18, border: '1px solid var(--line)',
-              boxShadow: 'var(--shadow-lg)', transform: 'rotate(-2deg)', maxWidth: 300,
+              boxShadow: 'var(--shadow-lg)', transform: 'rotate(-2deg)', maxWidth: 300, width: '100%',
             }}>
-              <img src="/img/brand/title-deed.jpg" alt="Sample Zenawi title deed" style={{ borderRadius: 8, width: '100%' }} />
+              <TitleDeedSlideshow slides={titleDeedPhotos} />
               <p style={{ textAlign: 'center', fontSize: '0.95rem', margin: '10px 0 0', color: 'var(--navy-800)', fontWeight: 600 }}>
-                Sample verified title deed
+                Happy clients receiving their title deeds
               </p>
             </div>
           </Reveal>
