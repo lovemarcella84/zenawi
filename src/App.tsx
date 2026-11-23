@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -8,7 +9,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Properties from './pages/Properties';
 import PropertyDetail from './pages/PropertyDetail';
-import Ceo from './pages/Ceo';
+import Management from './pages/Management';
 import Diaspora from './pages/Diaspora';
 import Contact from './pages/Contact';
 import Blogs from './pages/Blogs';
@@ -21,7 +22,8 @@ function AppRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
-        <Route path="/ceo" element={<Ceo />} />
+        <Route path="/management" element={<Management />} />
+        <Route path="/ceo" element={<Navigate to="/management" replace />} />
         <Route path="/diaspora" element={<Diaspora />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />

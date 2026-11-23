@@ -7,7 +7,7 @@ const links = [
   { to: '/about', label: 'About Us' },
   { to: '/properties', label: 'Properties' },
   { to: '/blogs', label: 'Blogs' },
-  { to: '/ceo', label: 'Know Our CEO' },
+  { to: '/management', label: 'Our Management' },
   { to: '/diaspora', label: 'Diaspora' },
   { to: '/contact', label: 'Contact Us' },
 ];

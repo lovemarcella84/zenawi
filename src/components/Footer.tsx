@@ -40,7 +40,7 @@ export default function Footer() {
             <h5>Quick Links</h5>
             <ul>
               <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/ceo">Know Our CEO</Link></li>
+              <li><Link to="/management">Our Management</Link></li>
               <li><Link to="/diaspora">Diaspora</Link></li>
               <li><Link to="/blogs">Blog Posts</Link></li>
               <li><Link to="/contact">Book a Site Visit</Link></li>
